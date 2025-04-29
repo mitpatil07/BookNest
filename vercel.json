@@ -1,0 +1,23 @@
+{
+    "builds": [
+      {
+        "src": "LibManage/wsgi.py",
+        "use": "@vercel/python"
+      }
+    ],
+    "routes": [
+      {
+        "src": "/static/(.*)",
+        "dest": "/static/$1"
+      },
+      {
+        "src": "/media/(.*)",
+        "dest": "/media/$1"
+      },
+      {
+        "src": "/(.*)",
+        "dest": "LibManage/wsgi.py"
+      }
+    ]
+  }
+  
