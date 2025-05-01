@@ -1,5 +1,3 @@
-### ✅ `README.md` for BookNest
-
 ```markdown
 # 📚 BookNest
 
@@ -78,4 +76,5 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 For queries or collaboration:
 - **Name:** Mitesh Patil
+- **EMail:** mitesh8767@gmail.com
 - **GitHub:** [@mitpatil07](https://github.com/mitpatil07)
