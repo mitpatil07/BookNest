@@ -1,0 +1,33 @@
+{%extends 'base.html'%}
+{% load static %}
+{%block start%}
+<div class="container my-5">
+  {% for record in data %}
+  <div class="my-3 p-3 bg-body rounded shadow-sm">
+    <h6 class="border-bottom pb-2 mb-0 text-primary fw-semibold text-uppercase">
+      {{ record.hstr_bookname }}
+    </h6>
+    <div class="d-flex text-body-secondary pt-3">
+
+    {% if record.hstr_bookimg %}
+      <img src="{{ record.hstr_bookimg.url }}" alt="Book Cover" class="img-fluid p-2" style="width: 60px;">
+    {% else %}
+      <img src="{% static 'default_book.png' %}" alt="Default Cover" class="img-fluid p-2" style="width: 60px;">
+    {% endif %}
+    
+
+      <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
+        <div class="d-flex justify-content-between">
+          <strong class="text-gray-dark">{{ record.hstr_bookinfo }}</strong>
+          <a href="{% url 'add_to_cart' 'history' record.id %}" class="btn btn-primary">Add to Cart</a>
+        </div>
+        <span class="d-block" style="width: 90%;">
+        </span>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+
+
+</div>
+{%endblock%}

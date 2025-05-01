@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block start %}
+<div class="container my-5">
+
+  <h2 class="text-center p-3 mb-4 bg-light border rounded shadow-sm"
+    style="font-family: 'Arial', sans-serif; font-weight: bold; font-size: 2.5rem; color: #333;">
+    <i class="bi bi-cart"></i> Your Cart
+  </h2>
+  {% if messages %}
+  <div class="alert alert-success" role="alert">
+    {% for message in messages %}
+    {{ message }}
+    {% endfor %}
+  </div>
+  {% endif %}
+  {% if cart_items %}
+  <ul class="list-group">
+    {% for item in cart_items %}
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+      <div class="d-flex align-items-center">
+  
+        {% if item.display_image %}
+        <img src="{{ item.display_image }}" width="60" height="60" class="me-3 rounded shadow-sm">
+        {% endif %}
+
+        <strong>{{ item.display_name }}</strong>
+        <span class="item-quantity" style="font-weight: 200; color: #383534; font-size: 1.2em; padding: 10px;">
+          (x{{ item.quantity }})
+        </span>
+
+      </div>
+
+      <div class="ms-auto">
+        <a href="{% url 'remove_from_cart' item.key %}" class="btn btn-danger btn-sm">Remove</a>
+      </div>
+    </li>
+    {% endfor %}
+  </ul>
+
+  <div class="mt-4">
+    <a href="{% url 'send_bill_email' %}" class="btn btn-success">
+      <i class="bi bi-file-earmark-arrow-down-fill"></i> Download Bill
+    </a>
+  </div>
+
+  {% else %}
+  <p class="text-center p-4 mb-5"
+    style="background-color: #fff3cd; color: #856404; font-family: 'Arial', sans-serif; font-size: 2rem; font-weight: bold; border-radius: 10px;">
+    Your cart is empty.
+  </p>
+
+  <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+    <div class="col-10 col-sm-8 col-lg-6">
+      <img src="{% static 'images/libing.jpg' %}" class="d-block mx-lg-auto img-fluid rounded-5 shadow-lg"
+        alt="Bootstrap Themes" width="700" height="500" loading="lazy">
+    </div>
+    <div class="col-lg-6">
+      <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">Your cart is empty! 😕</h1>
+      <p>Looks like you haven’t added any books yet.</p>
+      <blockquote style="font-style: italic; color: #6c757d;">“A reader lives a thousand lives before he dies. The man
+        who never reads lives only one.” – George R.R. Martin</blockquote>
+
+      <a href="{% url 'landing_page' %}" class="btn btn-outline-warning">Browse Books 📚</a>
+    </div>
+  </div>
+  {% endif %}
+
+</div>
+{% endblock %}

@@ -1,0 +1,10 @@
+{%extends 'base.html' %}
+{%block start%}
+
+<!-- payment_form.html -->
+
+<form action="{{ form.action }}" method="{{ form.method }}">
+    {{ form.as_p }}
+    <input type="submit" value="Pay">
+</form>
+{%endblock%}

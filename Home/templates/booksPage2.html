@@ -1,0 +1,25 @@
+{%extends 'base.html'%}
+{% load static %}
+{%block start%}
+<div class="container my-5">
+  {% for record in story %}
+  <div class="my-3 p-3 bg-body rounded shadow-sm">
+    <h6 class="border-bottom pb-2 mb-0 text-primary fw-semibold text-uppercase">{{ record.str_bookname }}</h6>
+    <div class="d-flex text-body-secondary pt-3">
+      <img src="{{ record.str_bookimg.url }}" alt="{{ record.str_bookname }} Cover" class="img-fluid p-2"
+        style="width: 60px;">
+      <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
+        <div class="d-flex justify-content-between">
+          <strong class="text-gray-dark">{{ record.str_bookinfo }}</strong>
+          <a href="{% url 'add_to_cart' 'story' record.id %}" class="btn btn-primary">Add to Cart</a>
+        </div>
+        <span class="d-block" style="width: 90%;">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vero quo
+          laborum repellat voluptate facere repellendus eligendi modi illo ad, earum perferendis incidunt possimus eum
+          rerum laboriosam nemo hic aut totam sequi distinctio repudiandae ullam molestias eveniet. Eum, sint. Hic fugit
+          soluta laboriosam.</span>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{%endblock%}
