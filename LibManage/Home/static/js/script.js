@@ -26,7 +26,7 @@ $(document).ready(function () {
                         suggestionsPopup.hide();  // Hide the popup if no suggestions
                     }
                 },
-                error: function(xhr, status, error) {
+                error: function (xhr, status, error) {
                     console.log("AJAX error:", status, error);
                 }
             });
@@ -51,7 +51,7 @@ $(document).ready(function () {
                     window.location.href = data.detail_url;  // Redirect to the book detail page
                 }
             },
-            error: function(xhr, status, error) {
+            error: function (xhr, status, error) {
                 console.log("Error fetching book details:", error);
             }
         });
@@ -64,3 +64,8 @@ $(document).ready(function () {
         }
     });
 });
+
+
+
+
+

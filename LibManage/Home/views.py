@@ -233,12 +233,12 @@ def logout_page(request):
     messages.success(request, "Logged Out!!")
     return redirect("login")
 
-
+@login_required(login_url='login')
 def about_page(request):
     return render(request, 'about.html')
 
 # Modify the search suggestions view to include book type in the response
-
+@login_required(login_url='login')
 def search_suggestions(request):
     query = request.GET.get('query', '').strip()
     suggestions = []
